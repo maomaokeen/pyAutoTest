@@ -1,0 +1,11 @@
+1.Jenkins构建报错“python不是内部命令”
+    在Jenkins中添加python的path环境变量。
+2.自动化jenkins报：ModuleNotFoundError: No module named 'common'
+    在脚本中添加环境变量，并放在import出问题的包之前
+    脚本变量命令
+    import sys
+    import os
+    current_directory = os.path.dirname(os.path.abspath(__file__))      #找到当前文件run_case.py 的绝对路径
+    root_path = os.path.abspath(os.path.dirname(current_directory) + os.path.sep + ".")
+    #由于测试项目文件夹布局为：run_case.py 的上一级目录才是项目的文件夹，因此需要找到run_case.py 的父文件夹，即项目的根目录
+    sys.path.append(root_path)            #把项目的根目录通过sys.path.append添加为执行时的环境变量

@@ -1,0 +1,10 @@
+1.UI/接口自动化脚本框架需要实现：
+    1）输出日志类文件，logs-log.py
+    2）测试基类封装，framework-Base_Page.py/Base_requests.py
+    3）配置文件，Config-config.py
+    4）测试脚本，testsuites/requestsuites
+    5）管理、执行脚本方式，entrance
+    6）测试报告输出
+    7）第三方插件
+    8）持续集成
+    9）数据库的连接
