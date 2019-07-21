@@ -1,0 +1,13 @@
+mock是模拟的意思，mock测试写一个挡板
+mock测试用的场景：
+1.相应接口未完成
+2.与第三方交互模拟更多业务场景
+
+一.mock server环境搭建
+这里选择python+flask的结构，选择flask的原因是：一方面可以mock；另一方面，轻量级，可快速实现制作web（以后的测试报告的展示或者接口脚本触发都可以对接上去），小而轻的东西上手速度也很快。
+1、安装python
+2、安装pip。pip是一个安装和管理 Python 包的工具,后面安装软件用pip安装。
+3、安装flask：pip install flask。
+
+编写一个简单的mock（demo_flask.py）
+调用接口看是否成功（test_demo_flask.py）

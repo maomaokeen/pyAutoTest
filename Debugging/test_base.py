@@ -11,6 +11,7 @@ driver = BasePage(dr)
 kw = ['id','kw']
 driver.type(kw,'selenium+python')
 driver.my_sleep(3)
+driver.implicitly_wait(2)
 driver.type(kw,'selenium')
 su = ['id','su']
 driver.click(su)

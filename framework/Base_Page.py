@@ -33,6 +33,11 @@ class BasePage:
         time.sleep(secondes)
         log1.info('暂停%d秒' % secondes)
 
+    def implicitly_wait(self, times):
+        """隐式等待"""
+        self.driver.implicitly_wait(times)
+        log1.info('隐式等待%d秒' % times)
+
     def get_img(self):
         """截图"""
         path = os.path.join(getcwd.get_cwd(), 'screenshots/')  # 拼接截图保存路径
