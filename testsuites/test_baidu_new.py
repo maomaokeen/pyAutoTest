@@ -1,4 +1,10 @@
 # -*- coding: UTF-8 -*-
+import sys
+import os
+current_directory = os.path.dirname(os.path.abspath(__file__))
+root_path = os.path.abspath(os.path.dirname(current_directory) + os.path.sep + ".")
+sys.path.append(root_path)
+
 import unittest
 from framework.Base_Page import BasePage
 from pageobject.baidu_new_page import NewPage

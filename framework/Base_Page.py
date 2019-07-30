@@ -15,6 +15,7 @@ config_path = os.path.join(path, 'Config/config.ini')
 config = configparser.ConfigParser()
 config.read(config_path,encoding="utf-8-sig")
 
+#定义所有的方法，包括driver的启动，元素的定位findelement，元素的操作方法，判断元素是否存在，等待时间，截图
 class BasePage:
     """测试基类"""
 
@@ -50,19 +51,24 @@ class BasePage:
         except BaseException:
             log1.error("截图失败", exc_info=1)
 
-    def open_browser(self):
-        browser = Config.config_read('environment', 'browser')
+    def open_browser(self,driver):
+        browser = driver
         log1.info('读取浏览器配置')
         url = Config.config_read('test', 'url')
         log1.info('读取url：%s' % url)
         try:
-            if browser == str(0):
+            if browser == 0:
                 abspath = os.path.abspath(r"F:\m2\chromedriver.exe")
                 self.driver = webdriver.Chrome(abspath)
                 log1.info('打开的浏览器为chrome')
-            elif browser == str(1):
+            elif browser == 1:
+                #abspath = os.path.abspath(r"F:\m2\chromedriver.exe")
                 self.driver = webdriver.Firefox()
                 log1.info('打开的浏览器为Firefox')
+            elif browser == 2:
+                # abspath = os.path.abspath(r"F:\m2\chromedriver.exe")
+                self.driver = webdriver.ie()
+                log1.info('打开的浏览器为ie')
             self.driver.get(url)
             self.driver.maximize_window()
             log1.info('浏览器最大化')
@@ -135,6 +141,18 @@ class BasePage:
             else:
                 self.get_img()
                 log1.error('点击元素报错', exc_info=1)
+
+    def text(self, selector):
+        """获取文本"""
+        text = self.find_element(selector).text
+        log1.info('元素的内容是:%s' % text)
+        return text
+
+    def valueinfo(self, selector,value):
+        """获取元素属性"""
+        value_info = self.find_element(selector).get_attribute(value)
+        log1.info('元素的%s是%s' % (value,value_info))
+        return value_info
 
     def use_js(self, js):
         """调用js"""

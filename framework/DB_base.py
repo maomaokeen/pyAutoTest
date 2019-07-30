@@ -25,14 +25,14 @@ class DBbase:
         # 关闭查询
         self.cursor.close()
 
-    def query(self, sql_str):
+    def query(self, elemt,table):
         '''查询数据并返回
             cursor 为连接光标
             sql_str为查询语句
         '''
         try:
-
-            self.cursor.execute(sql_str)
+            sql='select {0} from {1}'.format(elemt, table)
+            self.cursor.execute(sql)
             rows = self.cursor.fetchall()
             return rows
         except:
