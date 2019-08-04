@@ -11,6 +11,7 @@ app_path = os.path.join(path, 'app/zhongxinjiantou.szkingdom.android.newphone_4.
 
 desired_caps={
     'platformName':'Android',
+    #automationName:'XCuiTest'#ios启动时需要输入
     'deviceName':'4f367dbe', #手机设备名称，通过adb devices查看
     'platformVersion':'9', #android系统的版本号
     'app':app_path,

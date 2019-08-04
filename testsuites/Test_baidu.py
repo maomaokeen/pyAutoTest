@@ -14,7 +14,7 @@ from pageobject.BaiduPage import BaiduPage
 import pytest
 
 
-class test_baidu(unittest.TestCase):
+class Test_baidu(unittest.TestCase):
     '''百度首页'''
 
     def setUp(self):#初始化信息，如启动哪个浏览器
@@ -23,6 +23,7 @@ class test_baidu(unittest.TestCase):
     def tearDown(self):
         self.driver.quit()
 
+    @pytest.mark.baidu
     def test_baisu(self):
         '''测试百度搜索'''
         baisu = BaiduPage(self.driver)
@@ -35,6 +36,31 @@ class test_baidu(unittest.TestCase):
         self.assertEqual(baisu.text_nums_text(),'百度为您找到相关结果约30,700,000个')
         BasePage.get_img(self)
 
+    @pytest.mark.baidu
+    def test_baisu2(self):
+        '''测试百度搜索'''
+        baisu = BaiduPage(self.driver)
+        baisu.type_kw('appium')
+        baisu.click_su()
+        BasePage.my_sleep(3)
+        print(baisu.text_nums_text())
+        print(baisu.suvalue())
+        assert baisu.text_nums_text() =='百度为您找到相关结果约30,700,000个'
+        self.assertEqual(baisu.text_nums_text(),'百度为您找到相关结果约30,700,000个')
+        BasePage.get_img(self)
+
+    @pytest.mark.baidu2
+    def test_baisu3(self):
+        '''测试百度搜索'''
+        baisu = BaiduPage(self.driver)
+        baisu.type_kw('appium+appium')
+        baisu.click_su()
+        BasePage.my_sleep(3)
+        print(baisu.text_nums_text())
+        print(baisu.suvalue())
+        assert baisu.text_nums_text() == '百度为您找到相关结果约30,700,000个'
+        self.assertEqual(baisu.text_nums_text(), '百度为您找到相关结果约30,700,000个')
+        BasePage.get_img(self)
 
 if __name__ == '__main__':
     unittest.main()
