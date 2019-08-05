@@ -10,6 +10,7 @@ sys.path.append(root_path)
 
 from framework.Base_Page import BasePage
 from pageobject.BaiduPage import BaiduPage
+from framework.Base_browser import base_browser
 
 import pytest
 
@@ -18,7 +19,7 @@ class Test_baidu(unittest.TestCase):
     '''百度首页'''
 
     def setUp(self):#初始化信息，如启动哪个浏览器
-        bro = BasePage(self)
+        bro = base_browser(self)
         self.driver = bro.open_browser(0)
     def tearDown(self):
         self.driver.quit()
