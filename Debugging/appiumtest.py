@@ -1,12 +1,13 @@
 #coding = utf-8
 import os
 import time
+from framework.Base_app import base_app
 from appium import webdriver
 #name=zhongxinjiantou.szkingdom.android.newphone
 #aname=com.szkingdom.android.phone.ZXJTKdsInitActivity
 import getcwd
 
-path = getcwd.get_cwd()
+'''path = getcwd.get_cwd()
 app_path = os.path.join(path, 'app/zhongxinjiantou.szkingdom.android.newphone_4.3.1_431.apk')
 
 desired_caps={
@@ -17,12 +18,15 @@ desired_caps={
     'app':app_path,
     'appPackage':'zhongxinjiantou.szkingdom.android.newphone',#apk包名
     'appActivity':'com.szkingdom.android.phone.ZXJTKdsInitActivity', #apk的launcherActivity
+    'automatorname':'uiautomator2'
 }
 
 driver=webdriver.Remote('http://127.0.0.1:4723/wd/hub',desired_caps)
 
-time.sleep(10)
+time.sleep(10)'''
 
+app=base_app()
+driver=app.open_apkdriver()
 driver.find_element_by_xpath("//android.widget.TextView[@text='理财']").click()
 time.sleep(10)
 a=driver.find_element_by_id('zhongxinjiantou.szkingdom.android.newphone:id/financing_titleText').text

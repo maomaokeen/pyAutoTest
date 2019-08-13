@@ -34,9 +34,11 @@ class base_app():
             'app': apk_path,
             'appPackage': appPackage,  # apk包名
             'appActivity': appActivity,  # apk的launcherActivity
+            'noRset':'true',
+            'automationNname':'uiautomator2'
         }
         self.driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)
-        self.driver.implicitly_wait(30)
+        self.driver.implicitly_wait(3)
 
     def open_apkdriver(self):
         return self.driver

@@ -56,7 +56,7 @@ class BasePage:
         by = selector[0]
         value = selector[1]
         element = None
-        if by in ['id', 'name', 'class', 'tag', 'link', 'plink', 'css', 'xpath']:
+        if by in ['id', 'name', 'class', 'tag', 'link', 'plink', 'css', 'xpath','andriod_uiautomator']:
             # noinspection PyBroadException
             try:
                 if by == 'id':
@@ -75,6 +75,8 @@ class BasePage:
                     element = self.driver.find_element_by_css_selector(value)
                 elif by == 'xpath':
                     element = self.driver.find_element_by_xpath(value)
+                elif by == 'andriod_uiautomator':
+                    element = self.driver.find_element_by_andriod_uiautomator(value)
                 else:
                     log1.error('没有找到元素')
                 log1.info('元素定位成功。定位方式：%s，使用的值%s：' % (by, value))

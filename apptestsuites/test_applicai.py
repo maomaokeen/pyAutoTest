@@ -27,17 +27,13 @@ class test_licai(unittest.TestCase):
     def test_licai(self):
         '''测试理财点击'''
 
-        self.driver.find_element_by_android_uiautomator('new UiSelector().resourceId("zhongxinjiantou.szkingdom.android.newphone:id/tv_title").text("理财")').click()
-        time.sleep(10)
-        a = self.driver.find_element_by_id('zhongxinjiantou.szkingdom.android.newphone:id/financing_titleText').text
-        assert a=='理财'
-        BasePage.get_img(self)
-        time.sleep(10)
-        self.driver.find_element_by_android_uiautomator('new UiSelector().description("定期理财")').click()
-        time.sleep(10)
-        b = self.driver.find_element_by_xpath("//android.widget.TextView[@text='定期理财']").text
-        assert b == '定期理财'
-        BasePage.get_img(self)
+        lp=licaiPage(self.driver)
+        time.sleep(30)
+        lp.click_licai1()
+        lp.know_click()
+        print(lp.licai2)
+
+
 
 if __name__=="__main__":
     unittest.main()
