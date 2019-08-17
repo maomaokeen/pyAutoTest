@@ -10,11 +10,11 @@ class DBbase:
         # 连接数据库
         try:
             self.connect = pymysql.Connect(
-                host='43.254.106.50',
+                host='127.0.0.1',
                 port=3306 ,
-                user='uat' ,
-                passwd='QsWc9v*%B5a#e' ,
-                db='jbp_uat2' ,
+                user='root' ,
+                passwd='QDMmaomao0125' ,
+                db='qdmtest' ,
             )
             # 获取游标
             self.cursor = self.connect.cursor()
@@ -32,6 +32,14 @@ class DBbase:
         '''
         try:
             sql='select {0} from {1}'.format(elemt, table)
+            self.cursor.execute(sql)
+            rows = self.cursor.fetchall()
+            return rows
+        except:
+            return False
+
+    def  querysql(self,sql):
+        try:
             self.cursor.execute(sql)
             rows = self.cursor.fetchall()
             return rows

@@ -2,7 +2,7 @@ from framework.DB_base import DBbase
 
 def dbtest():
     db=DBbase()
-    row=db.query('vc_name', 'fiz_user')
+    row=db.querysql('select cid from chengji where chengji="100"')
     print(row)
     for row1 in row:
         print(row1)

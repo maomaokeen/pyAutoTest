@@ -13,7 +13,8 @@ case_path="./u2/"
 @pytest.fixture(scope='module',autouse=True)
 def u2():
     global d
-    d=ui.connect('4f367dbe')
+    #d=ui.connect('4f367dbe')
+    d=ui.connect_wifi('10.0.0.2')
     d.app_start('zhongxinjiantou.szkingdom.android.newphone')
     return d
 @pytest.fixture(scope='module',autouse=True)
